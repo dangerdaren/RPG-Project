@@ -4,50 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Mover : MonoBehaviour
+namespace RPG.Movement
 {
-    private NavMeshAgent _navMeshAgent;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Mover : MonoBehaviour
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-    }
+        private NavMeshAgent navMeshAgent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButton(1))
+        // Start is called before the first frame update
+        void Start()
         {
-            MoveToCurser();
-        }
-        else
-        {
-            _navMeshAgent.destination = transform.position;
+            navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
-        UpdateAnimator();
-
-    }
-
-    private void MoveToCurser()
-    {
-        Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit _hit;
-
-        bool _hasHit = Physics.Raycast(_ray, out _hit);
-
-        if (_hasHit)
+        // Update is called once per frame
+        void Update()
         {
-            _navMeshAgent.destination = _hit.point;
+            UpdateAnimator();
         }
-    }
 
-    private void UpdateAnimator()
-    {
-        Vector3 _velocity = _navMeshAgent.velocity;
-        Vector3 _localVelocity = transform.InverseTransformDirection(_velocity);
-        float speed = _localVelocity.z;
-        GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
+        private void UpdateAnimator()
+        {
+            Vector3 _velocity = navMeshAgent.velocity;
+            Vector3 _localVelocity = transform.InverseTransformDirection(_velocity);
+            float speed = _localVelocity.z;
+            GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
+        }
+
+        public void MoveTo(Vector3 destination)
+        {
+            navMeshAgent.destination = destination;
+        }
     }
 }
