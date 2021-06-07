@@ -19,23 +19,12 @@ namespace RPG.Control
 
         void Update()
         {
-            InteractWithMovement();
-            InteractWithCombat();
+            if (InteractWithCombat()) return;
+            if (InteractWithMovement()) return;
+            print("Nothing to do");
         }
 
-        private void InteractWithMovement()
-        {
-            if (Input.GetMouseButton(1))
-            {
-                MoveToCursor();
-            }
-            else
-            {
-                navMeshAgent.destination = transform.position;
-            }
-        }
-
-        private void InteractWithCombat()
+        private bool InteractWithCombat()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
             foreach (RaycastHit hit in hits)
@@ -47,16 +36,28 @@ namespace RPG.Control
                 {
                     GetComponent<Fighter>().Attack(target);
                 }
+                return true;
             }
+            return false;
         }
 
-        private void MoveToCursor()
+        private bool InteractWithMovement()
         {
-            bool hasHit = Physics.Raycast(GetMouseRay(), out RaycastHit hit);
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
             if (hasHit)
             {
-                GetComponent<Mover>().MoveTo(hit.point);
+                if (Input.GetMouseButton(1))
+                {
+                    GetComponent<Mover>().StartMoveAction(hit.point);
+                }
+                //else
+                //{
+                //    navMeshAgent.isStopped = true;
+                //}
+                return true;
             }
+            return false;
         }
 
         private static Ray GetMouseRay()
