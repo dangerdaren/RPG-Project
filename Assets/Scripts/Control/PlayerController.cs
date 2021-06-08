@@ -21,7 +21,6 @@ namespace RPG.Control
         {
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
-            print("Nothing to do");
         }
 
         private bool InteractWithCombat()
@@ -47,17 +46,15 @@ namespace RPG.Control
             bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
             if (hasHit)
             {
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(0))
                 {
                     GetComponent<Mover>().StartMoveAction(hit.point);
                 }
-                //else
-                //{
-                //    navMeshAgent.isStopped = true;
-                //}
-                return true;
+             return true;
+
             }
             return false;
+
         }
 
         private static Ray GetMouseRay()
