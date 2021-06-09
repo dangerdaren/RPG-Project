@@ -67,7 +67,7 @@ namespace RPG.Combat
         // Animation Event already built into imported animation
         private void Hit()
         {
-            target.GetComponent<Health>().TakeDamage(weaponDamage);
+            if (target != null) target.GetComponent<Health>().TakeDamage(weaponDamage);
         }
 
         public void Cancel()
