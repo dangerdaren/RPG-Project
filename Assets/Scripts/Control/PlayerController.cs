@@ -12,9 +12,12 @@ namespace RPG.Control
     {
         private NavMeshAgent navMeshAgent;
 
+        Fighter fighter;
+
         void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            fighter = GetComponent<Fighter>();
         }
 
         void Update()
@@ -29,11 +32,12 @@ namespace RPG.Control
             foreach (RaycastHit hit in hits)
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (target == null) continue;
+
+                if (!fighter.CanAttack(target)) continue;
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    GetComponent<Fighter>().Attack(target);
+                    fighter.Attack(target);
                 }
                 return true;
             }

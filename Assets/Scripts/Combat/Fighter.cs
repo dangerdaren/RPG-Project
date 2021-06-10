@@ -46,6 +46,7 @@ namespace RPG.Combat
 
         public void Attack(CombatTarget combatTarget)
         {
+            timeSinceLastAttack = timeBetweenAttacks + 1;
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
             Debug.Log($"Attacking the {combatTarget.name}!");
@@ -56,28 +57,47 @@ namespace RPG.Combat
             return Vector3.Distance(target.transform.position, transform.position) <= weaponRange;
         }
 
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null) return false;
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead; // return true if these things.
+        }
+
         private void AttackBehavior()
         {
             transform.LookAt(target.transform);
-
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
                 // This will trigger the Hit() event.
-                GetComponent<Animator>().SetTrigger("attack");
+                TriggerAttack();
                 timeSinceLastAttack = 0f;
             }
+        }
+
+        private void TriggerAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         // Animation Event already built into imported animation
         private void Hit()
         {
+            if (target == null) return;
             target.TakeDamage(weaponDamage);
         }
 
         public void Cancel()
         {
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            TriggerStopAttack();
             target = null;
+        }
+
+        private void TriggerStopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
         }
     }
 }
