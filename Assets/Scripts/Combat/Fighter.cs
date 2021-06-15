@@ -14,7 +14,7 @@ namespace RPG.Combat
 
         private Health target;
 
-        private float timeSinceLastAttack = 0;
+        private float timeSinceLastAttack = Mathf.Infinity;
 
         private Mover mover;
 
@@ -44,7 +44,7 @@ namespace RPG.Combat
 
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             timeSinceLastAttack = timeBetweenAttacks + 1;
             GetComponent<ActionScheduler>().StartAction(this);
@@ -57,7 +57,7 @@ namespace RPG.Combat
             return Vector3.Distance(target.transform.position, transform.position) <= weaponRange;
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null) return false;
             Health targetToTest = combatTarget.GetComponent<Health>();
