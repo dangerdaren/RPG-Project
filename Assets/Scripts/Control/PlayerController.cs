@@ -5,6 +5,7 @@ using RPG.Combat;
 using RPG.Movement;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Core;
 
 namespace RPG.Control
 {
@@ -13,15 +14,19 @@ namespace RPG.Control
         private NavMeshAgent navMeshAgent;
 
         Fighter fighter;
+        Health health;
 
         void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             fighter = GetComponent<Fighter>();
+            health = GetComponent<Health>();
         }
 
         void Update()
         {
+            if (health.IsDead) return;
+
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
         }

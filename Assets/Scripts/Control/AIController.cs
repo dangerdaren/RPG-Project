@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Combat;
 using RPG.Movement;
+using RPG.Core;
 
 namespace RPG.Control
 {
@@ -24,6 +25,7 @@ namespace RPG.Control
 
         void Update()
         {
+            if (health.IsDead) return;
             CheckForChase();
         }
 
@@ -41,8 +43,6 @@ namespace RPG.Control
 
         private bool InAttackRangeOfPlayer()
         {
-            //if (health.IsDead) return false;
-
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
             return distanceToPlayer <= chaseDistance;
         }

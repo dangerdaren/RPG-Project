@@ -10,16 +10,20 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour, IAction
     {
         private NavMeshAgent navMeshAgent;
+        private Health health;
 
         // Start is called before the first frame update
         void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
         }
 
         // Update is called once per frame
         void Update()
         {
+            navMeshAgent.enabled = !health.IsDead; // we want navmesh to be false if player isDead is true. Invert true to false and set.
+
             UpdateAnimator();
         }
 
