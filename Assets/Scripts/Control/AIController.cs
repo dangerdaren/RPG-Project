@@ -59,7 +59,15 @@ namespace RPG.Control
         {
             fighter.Attack(player);
         }
+
+        // Called by Unity
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, chaseDistance);
+        }
     }
+
 }
 
 
