@@ -12,6 +12,7 @@ namespace RPG.Control
     {
         [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private float timeToWatchForPlayer = 5f;
+        [SerializeField] private float waypointDwellTime = 0f;
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
 
@@ -22,6 +23,7 @@ namespace RPG.Control
 
         private Vector3 guardPosition;
         private float timeSinceLastSawPlayer = Mathf.Infinity;
+        private float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         private int currentWaypointIndex = 0;
 
         void Start()
@@ -44,7 +46,6 @@ namespace RPG.Control
         {
             if (InAttackRangeOfPlayer() && fighter.CanAttack(player)) // Attack State
             {
-                timeSinceLastSawPlayer = 0f;
                 AttackBehavior();
             }
             else if (timeSinceLastSawPlayer <= timeToWatchForPlayer) // Suspicion State
@@ -56,7 +57,13 @@ namespace RPG.Control
                 PatrolBehavior();
             }
 
+            UpdateTimers();
+        }
+
+        private void UpdateTimers()
+        {
             timeSinceLastSawPlayer += Time.deltaTime;
+            timeSinceArrivedAtWaypoint += Time.deltaTime;
         }
 
         private bool InAttackRangeOfPlayer()
@@ -67,6 +74,8 @@ namespace RPG.Control
 
         private void AttackBehavior()
         {
+            timeSinceLastSawPlayer = 0f;
+
             print($"{this.name} is chasing {player.name}!");
 
             AttackPlayer();
@@ -84,12 +93,16 @@ namespace RPG.Control
             {
                 if (AtWaypoint())
                 {
+                    timeSinceArrivedAtWaypoint = 0;
                     CycleWaypoint();
                 }
                 nextPosition = GetCurrentWaypoint();
             }
 
-            mover.StartMoveAction(nextPosition);
+            if (timeSinceArrivedAtWaypoint >= waypointDwellTime)
+            {
+                mover.StartMoveAction(nextPosition);
+            }
         }
 
         private bool AtWaypoint()
