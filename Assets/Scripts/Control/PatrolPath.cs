@@ -22,7 +22,7 @@ namespace RPG.Control
             }
         }
 
-        private int GetNextIndex(int i)
+        public int GetNextIndex(int i)
         {
             if (i + 1 == transform.childCount)
             {
@@ -31,7 +31,7 @@ namespace RPG.Control
             return i + 1;
         }
 
-        private Transform GetWaypoint(int i)
+        public Transform GetWaypoint(int i)
         {
             return transform.GetChild(i);
         }
