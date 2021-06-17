@@ -10,35 +10,49 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] private float chaseDistance = 5f;
+        [SerializeField] private float timeToWatchForPlayer = 5f;
 
         private GameObject player;
         private Fighter fighter;
         private Mover mover;
         private Health health;
 
+        private Vector3 guardPosition;
+        float timeSinceLastSawPlayer = Mathf.Infinity;
+
         void Start()
         {
             player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
+            mover = GetComponent<Mover>();
+
+            guardPosition = transform.position;
         }
 
         void Update()
         {
             if (health.IsDead) return;
-            CheckForChase();
+            DetermineBehavior();
         }
 
-        private void CheckForChase()
+        private void DetermineBehavior()
         {
-            if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
+            if (InAttackRangeOfPlayer() && fighter.CanAttack(player)) // Attack State
             {
-                ChasePlayer();
+                timeSinceLastSawPlayer = 0f;
+                AttackBehavior();
             }
-            else
+            else if (timeSinceLastSawPlayer <= timeToWatchForPlayer) // Suspicion State
             {
-                fighter.Cancel();
+                SuspicionBehavior();
             }
+            else // Return to Guarding State
+            {
+                GuardBehavior();
+            }
+
+            timeSinceLastSawPlayer += Time.deltaTime;
         }
 
         private bool InAttackRangeOfPlayer()
@@ -47,12 +61,21 @@ namespace RPG.Control
             return distanceToPlayer <= chaseDistance;
         }
 
-        private void ChasePlayer()
+        private void AttackBehavior()
         {
             print($"{this.name} is chasing {player.name}!");
 
             AttackPlayer();
+        }
 
+        private void SuspicionBehavior()
+        {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        private void GuardBehavior()
+        {
+            mover.StartMoveAction(guardPosition);
         }
 
         private void AttackPlayer()
