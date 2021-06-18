@@ -47,7 +47,7 @@ namespace RPG.Combat
         public void Attack(GameObject combatTarget)
         {
 
-            timeSinceLastAttack = timeBetweenAttacks;
+            //timeSinceLastAttack = timeBetweenAttacks;
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
             Debug.Log($"Attacking the {combatTarget.name}!");
