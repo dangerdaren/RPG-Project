@@ -1700,25 +1700,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Follow Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 8014504635780946344, guid: 75b5587b650124ad78630a5bb15e0c87, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 22.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014504635780946344, guid: 75b5587b650124ad78630a5bb15e0c87, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014504635780946351, guid: 75b5587b650124ad78630a5bb15e0c87, type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014504635780946351, guid: 75b5587b650124ad78630a5bb15e0c87, type: 3}
-      propertyPath: field of view
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014504635780946351, guid: 75b5587b650124ad78630a5bb15e0c87, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75b5587b650124ad78630a5bb15e0c87, type: 3}
