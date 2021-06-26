@@ -18,6 +18,9 @@ namespace RPG.SceneManagement
         [SerializeField] Transform spawnPoint;
         [SerializeField] DestinationIdentifier origin;
         [SerializeField] DestinationIdentifier destination;
+        [SerializeField] float fadeTime = 1f;
+        [SerializeField] float fadeInDelay = .5f;
+
 
         private void OnTriggerEnter(Collider other)
         {
@@ -30,10 +33,17 @@ namespace RPG.SceneManagement
         private IEnumerator Transition()
         {
             DontDestroyOnLoad(gameObject); // this only works when the gameobject is in the root of the scene heirarchy.
+
+            Fader fader = FindObjectOfType<Fader>();
+
+            yield return fader.FadeOut(fadeTime); // yield return makes sure the coroutine has finished before moving on to the rest of the code.
             yield return SceneManager.LoadSceneAsync(loadScene);
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
+
+            yield return new WaitForSeconds(fadeInDelay); // Cool, didn't know you could just do this whenever!
+            yield return fader.FadeIn(fadeTime);
 
             Destroy(gameObject);
         }
@@ -57,7 +67,6 @@ namespace RPG.SceneManagement
                 }
 
             }
-
             return null;
         }
     }
