@@ -27,6 +27,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 5
+  timeToWatchForPlayer: 5
+  waypointDwellTime: 0
+  patrolPath: {fileID: 0}
+  waypointTolerance: 1
+  patrolSpeedFraction: 0.35
 --- !u!114 &8759302263300818032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +108,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1250859935194421442, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4007595290009700481, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
       propertyPath: health
       value: 20

@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5268733827140977432, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 41a5cfd4-495b-4a93-b133-838c3b189f39
+      objectReference: {fileID: 0}
     - target: {fileID: 8577616957666037777, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: patrolPath
       value: 
@@ -1042,6 +1046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5268733827140977432, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: uniqueIdentifier
+      value: f72b1fa3-1276-476c-8325-351462177a8b
+      objectReference: {fileID: 0}
     - target: {fileID: 8577616957666037777, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: patrolSpeedFraction
       value: 0.35
@@ -1292,6 +1300,10 @@ PrefabInstance:
     - target: {fileID: 2197166178848215324, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_Name
       value: Thug
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268733827140977432, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 3d8198a1-a33f-4d2c-8c54-e9bd55c92c27
       objectReference: {fileID: 0}
     - target: {fileID: 8059307347028480859, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: healthPoints
@@ -1919,6 +1931,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5268733827140977432, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 530ef8ac-fd1c-41d4-9951-4b8b5aca7dd0
+      objectReference: {fileID: 0}
     - target: {fileID: 8577616957666037777, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: patrolPath
       value: 
@@ -2219,6 +2235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5268733827140977432, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 0671baba-e880-46f5-8ca7-b8ead4353985
+      objectReference: {fileID: 0}
     - target: {fileID: 8577616957666037777, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: patrolPath
       value: 
@@ -2240,6 +2260,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 401670476748116239, guid: 006dd73f6f2a645129719280462bfdfe, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 9cd7ff25-4867-4f39-872d-e222c5ab4e35
+      objectReference: {fileID: 0}
     - target: {fileID: 5976468382248583959, guid: 006dd73f6f2a645129719280462bfdfe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.077
