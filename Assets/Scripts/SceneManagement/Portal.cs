@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using RPG.Saving;
 
 namespace RPG.SceneManagement
 {
@@ -35,9 +36,15 @@ namespace RPG.SceneManagement
             DontDestroyOnLoad(gameObject); // this only works when the gameobject is in the root of the scene heirarchy.
 
             Fader fader = FindObjectOfType<Fader>();
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
 
             yield return fader.FadeOut(fadeTime); // yield return makes sure the coroutine has finished before moving on to the rest of the code.
+
+            savingWrapper.Save();
+
             yield return SceneManager.LoadSceneAsync(loadScene);
+
+            savingWrapper.Load();
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
@@ -53,7 +60,7 @@ namespace RPG.SceneManagement
             GameObject player = GameObject.FindWithTag("Player");
             player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.transform.position);
             player.transform.rotation = otherPortal.spawnPoint.transform.rotation;
-        }
+            }
 
         private Portal GetOtherPortal()
         {

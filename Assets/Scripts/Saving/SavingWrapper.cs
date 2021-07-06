@@ -8,6 +8,11 @@ namespace RPG.Saving
     {
         const string defaultSaveFile = "savgam";
 
+        private void Start()
+        {
+            Load();
+        }
+
         private void Update()
         {
             SaveGame();
@@ -18,8 +23,18 @@ namespace RPG.Saving
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
-                GetComponent<SavingSystem>().Save(defaultSaveFile);
+                Save();
             }
+        }
+
+        public void Save()
+        {
+            GetComponent<SavingSystem>().Save(defaultSaveFile);
+        }
+
+        public void Load()
+        {
+            GetComponent<SavingSystem>().Load(defaultSaveFile);
         }
 
         private void LoadGame()
