@@ -96,7 +96,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1250859935194421442, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
       propertyPath: uniqueIdentifier
-      value: 
+      value: player
       objectReference: {fileID: 0}
     - target: {fileID: 3255635334742801983, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
       propertyPath: weaponRange

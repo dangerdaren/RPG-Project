@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5268733827140977432, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 5d2b9668-98a8-4da9-b5ec-8fc99b2a9925
+      objectReference: {fileID: 0}
     - target: {fileID: 8461112432207029733, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -291,6 +295,10 @@ PrefabInstance:
     - target: {fileID: 2197166178848215324, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268733827140977432, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 704a989d-4aca-44b0-bd20-4821e96bc496
       objectReference: {fileID: 0}
     - target: {fileID: 8461112432207029733, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_Enabled
@@ -400,7 +408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 705507995}
-  - {fileID: 1871007749}
+  - {fileID: 8014504635389244637}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -462,6 +470,10 @@ PrefabInstance:
     - target: {fileID: 6271823634526692464, guid: 960ece9882cfa46d588e9918e9de364c, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745165721379340941, guid: 960ece9882cfa46d588e9918e9de364c, type: 3}
+      propertyPath: uniqueIdentifier
+      value: f04bb64d-b846-4f59-bd8f-5c4d6d50e125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 960ece9882cfa46d588e9918e9de364c, type: 3}
@@ -1018,11 +1030,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1871007749 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8014504634142481360, guid: 75b5587b650124ad78630a5bb15e0c87, type: 3}
-  m_PrefabInstance: {fileID: 8014504635389244636}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1882381079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1226,6 +1233,10 @@ PrefabInstance:
     - target: {fileID: 2197166178848215324, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268733827140977432, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 167d74f4-1287-4fda-b18d-61ee5f684aa8
       objectReference: {fileID: 0}
     - target: {fileID: 8461112432207029733, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_Enabled
@@ -1702,3 +1713,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75b5587b650124ad78630a5bb15e0c87, type: 3}
+--- !u!4 &8014504635389244637 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 8014504635389244636}
+  m_PrefabAsset: {fileID: 0}

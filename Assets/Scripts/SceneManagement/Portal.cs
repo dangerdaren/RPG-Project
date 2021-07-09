@@ -49,6 +49,8 @@ namespace RPG.SceneManagement
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
 
+            savingWrapper.Save();
+
             yield return new WaitForSeconds(fadeInDelay); // Cool, didn't know you could just do this whenever!
             yield return fader.FadeIn(fadeTime);
 

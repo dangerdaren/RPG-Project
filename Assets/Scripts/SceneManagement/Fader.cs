@@ -8,11 +8,10 @@ namespace RPG.SceneManagement
     {
         CanvasGroup canvasFader;
 
-        private void Start()
+        private void Awake()
         {
             canvasFader = GetComponent<CanvasGroup>();
         }
-
 
         public IEnumerator FadeOut(float fadeTime)
         {
@@ -21,6 +20,11 @@ namespace RPG.SceneManagement
                 canvasFader.alpha += Time.deltaTime / fadeTime;
                 yield return null;
             }
+        }
+
+        public void FadeOutInstantly()
+        {
+            canvasFader.alpha = 1;
         }
 
         public IEnumerator FadeIn(float fadeTime)

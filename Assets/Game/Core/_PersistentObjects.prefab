@@ -141,6 +141,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2422807506137109510}
     m_Modifications:
+    - target: {fileID: 2615396350160412651, guid: ad68dc93c0e164bc2aeb6d2ba24e1f31, type: 3}
+      propertyPath: fadeTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3209710918661634115, guid: ad68dc93c0e164bc2aeb6d2ba24e1f31, type: 3}
       propertyPath: m_Name
       value: SavingSystem
