@@ -31,5 +31,10 @@ namespace RPG.SceneManagement
                 yield return null;
             }
         }
+
+        public void FadeOutImmediately()
+        {
+            canvasFader.alpha = 1;
+        }
     }
 }
