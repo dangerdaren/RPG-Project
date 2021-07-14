@@ -11,6 +11,8 @@ namespace RPG.Combat
         [SerializeField] float weaponDamage = 5f;
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
+        [SerializeField] Transform handTransform = null;
+        [SerializeField] Weapon weapon = null;
 
         private Health target;
 
@@ -22,6 +24,7 @@ namespace RPG.Combat
         void Start()
         {
             mover = GetComponent<Mover>();
+            SpawnWeapon();
         }
 
         // Update is called once per frame
@@ -99,6 +102,13 @@ namespace RPG.Combat
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
+        public void SpawnWeapon()
+        {
+            if (weapon == null) return;
+            Animator animator = GetComponent<Animator>();
+            weapon.Spawn(handTransform, animator);
         }
 
     }
