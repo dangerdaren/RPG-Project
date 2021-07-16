@@ -7,17 +7,19 @@ namespace RPG.Combat
     {
         [SerializeField] AnimatorOverrideController animOverride = null;
         [SerializeField] GameObject equippedPrefab = null;
-
         [SerializeField] float weaponDamage = 5f;
-        public float WeaponDamage { get { return weaponDamage; } } // todo might need to make these methods instead
-
+            public float WeaponDamage => weaponDamage;
         [SerializeField] float weaponRange = 2f;
-        public float WeaponRange { get { return weaponRange; } } // todo might need to make these methods instead
+            public float WeaponRange => weaponRange;
+        [SerializeField] bool isRightHanded = true;
 
-        public void Spawn(Transform handTransform, Animator animator)
+        public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
             if (equippedPrefab != null)
             {
+                Transform handTransform;
+                if (isRightHanded) handTransform = rightHand;
+                else handTransform = leftHand;
                 Instantiate(equippedPrefab, handTransform);
             }
 

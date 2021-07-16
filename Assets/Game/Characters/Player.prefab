@@ -33,6 +33,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332445590950219925}
     m_Modifications:
+    - target: {fileID: 164946, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166696, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 191330, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
       propertyPath: m_Name
       value: Character_Knights_Soldier_02
@@ -87,6 +95,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &7123099281174859766 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 403948, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 7123099281174734362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7123099281174933406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
@@ -99,6 +112,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1185749123928807084, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3255635334742801983, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
       propertyPath: weapon
       value: 
@@ -120,9 +137,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7123099281174933406}
     - target: {fileID: 3255635334742801983, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 7123099281174859766}
+    - target: {fileID: 3255635334742801983, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
       propertyPath: swordAnimOverride
       value: 
       objectReference: {fileID: 22100000, guid: 3a5cef66d9f7c424abc36034d1f7b405, type: 2}
+    - target: {fileID: 3255635334742801983, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 7123099281174933406}
     - target: {fileID: 5059892056157752006, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
       propertyPath: m_Name
       value: Player
