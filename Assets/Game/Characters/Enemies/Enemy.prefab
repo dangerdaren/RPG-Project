@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &6374722225058698595
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851806507756569618}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.348606, y: 0.4538002, z: 0.20699859}
+  m_Center: {x: -0.002022922, y: 1.2683978, z: -0.016183782}
 --- !u!136 &8799039600258015916
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b8a7fb053c445f19975b8c0a33041d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 5
+  chaseDistance: 20
   timeToWatchForPlayer: 5
   waypointDwellTime: 0
   patrolPath: {fileID: 0}
@@ -101,6 +114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!1 &1851806507756569618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 133518, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+  m_PrefabInstance: {fileID: 1851806507756440988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1851806507756362384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 481036, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}

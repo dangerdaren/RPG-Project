@@ -9,7 +9,7 @@ namespace RPG.Core
     {
         [SerializeField] private float healthPoints = 100f;
         private bool isDead = false;
-        public bool IsDead { get { return isDead; } }
+        public bool IsDead => isDead;
 
         // Start is called before the first frame update
         void Start()
