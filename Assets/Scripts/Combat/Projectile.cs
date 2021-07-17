@@ -11,6 +11,7 @@ namespace RPG.Combat
         [SerializeField] float speed = 5f;
         Health target = null;
         float damage = 0;
+        [SerializeField] bool isHoming = false;
 
         // Start is called before the first frame update
         void Start()
@@ -34,7 +35,7 @@ namespace RPG.Combat
         {
             if (!target) return;
 
-            transform.LookAt(GetAimLocation());
+            if (isHoming) transform.LookAt(GetAimLocation());
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
 
@@ -47,7 +48,6 @@ namespace RPG.Combat
             if (!targetCapsule) return target.transform.position;
             return target.transform.position + Vector3.up * (targetCapsule.height / 2);
         }
-    
 
         private void OnTriggerEnter(Collider other)
         {

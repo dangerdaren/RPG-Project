@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b8a7fb053c445f19975b8c0a33041d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 20
+  chaseDistance: 10
   timeToWatchForPlayer: 5
   waypointDwellTime: 0
   patrolPath: {fileID: 0}

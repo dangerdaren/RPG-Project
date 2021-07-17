@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 8059307347028480859, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: healthPoints
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8461112432207029733, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: defaultWeapon
       value: 
@@ -70,6 +74,10 @@ PrefabInstance:
     - target: {fileID: 8461112432207029733, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8577616957666037777, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
+      propertyPath: chaseDistance
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
