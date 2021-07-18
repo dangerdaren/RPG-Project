@@ -9,14 +9,15 @@ namespace RPG.Combat
     public class Projectile : MonoBehaviour
     {
         [SerializeField] float speed = 5f;
+        [SerializeField] bool isHoming = false;
+
         Health target = null;
         float damage = 0;
-        [SerializeField] bool isHoming = false;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            transform.LookAt(GetAimLocation());
         }
 
         // Update is called once per frame
@@ -35,14 +36,15 @@ namespace RPG.Combat
         {
             if (!target) return;
 
-            if (isHoming) transform.LookAt(GetAimLocation());
+            if (isHoming && !target.IsDead) transform.LookAt(GetAimLocation());
+
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
 
         private Vector3 GetAimLocation()
         {
             // Get the height of the target and halve it to find the center location.
-            // Then return add that height to the target, which is at the bottom.
+            // Then return + add that height to the target, which is at the bottom.
             // Return the value back as a Vector3.
             CapsuleCollider targetCapsule = target.GetComponent<CapsuleCollider>();
             if (!targetCapsule) return target.transform.position;
@@ -52,6 +54,8 @@ namespace RPG.Combat
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<Health>() != target) return;
+            if (target.IsDead) return;
+
             target.TakeDamage(damage);
             Destroy(gameObject);
         }

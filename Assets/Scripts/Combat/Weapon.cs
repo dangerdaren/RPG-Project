@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using UnityEngine;
 
@@ -15,18 +16,36 @@ namespace RPG.Combat
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
 
+        const string weaponName = "Weapon";
+
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
+            DestoryOldWeapon(rightHand, leftHand);
+
             if (equippedPrefab != null)
             {
                 Transform handTransform = GetHandTransform(rightHand, leftHand);
-                Instantiate(equippedPrefab, handTransform);
+                GameObject weapon = Instantiate(equippedPrefab, handTransform);
+                weapon.name = weaponName;
             }
 
             if (animOverride != null)
             {
                 animator.runtimeAnimatorController = animOverride;
             }
+        }
+
+        private void DestoryOldWeapon(Transform rightHand, Transform leftHand)
+        {
+            Transform oldWeapon = rightHand.Find(weaponName); //check right hand for weapon.
+            if(oldWeapon == null)
+            {
+                oldWeapon = leftHand.Find(weaponName); // if null, check left hand.
+            }
+            if (oldWeapon == null) return; // if null, no weapon, no worries.
+
+            oldWeapon.name = "DESTROYING"; // otherwise, change the name to mark it, then destroy it.
+            Destroy(oldWeapon.gameObject);
         }
 
         private Transform GetHandTransform(Transform rightHand, Transform leftHand)
@@ -46,19 +65,6 @@ namespace RPG.Combat
         {
             Projectile projectileInstance = Instantiate(projectile, GetHandTransform(rightHand, leftHand).position, Quaternion.identity);
             projectileInstance.SetTarget(target, weaponDamage);
-
-            projectileInstance.transform.LookAt(GetAimLocation(target)); // For not-homing option.
         }
-
-        private Vector3 GetAimLocation(Health target)
-        {
-            // Get the height of the target and halve it to find the center location.
-            // Then return add that height to the target, which is at the bottom.
-            // Return the value back as a Vector3.
-            CapsuleCollider targetCapsule = target.GetComponent<CapsuleCollider>();
-            if (!targetCapsule) return target.transform.position;
-            return target.transform.position + Vector3.up * (targetCapsule.height / 2);
-        }
-
     }
 }

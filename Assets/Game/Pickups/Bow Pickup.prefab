@@ -1,70 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6076561903562034134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7340929809463833547}
-  - component: {fileID: 7021646537012422355}
-  - component: {fileID: 1846253816660386836}
-  m_Layer: 0
-  m_Name: Bow Pickup
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7340929809463833547
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6076561903562034134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4080136270260237392}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7021646537012422355
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6076561903562034134}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7876076, y: 0.5, z: 2.5015802}
-  m_Center: {x: 0.053770155, y: -0.0034229755, z: 0.98340034}
---- !u!114 &1846253816660386836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6076561903562034134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3396cfe3422b48b4baf43e851499279, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: e64a2a57b0cd54ddca7b0e10882fceaa, type: 2}
---- !u!1001 &4075964163312730714
+--- !u!1001 &3440004192713903503
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7340929809463833547}
+    m_TransformParent: {fileID: 2952870864305853871}
     m_Modifications:
     - target: {fileID: 1563655986059756, guid: 7f105c0c272e6c146b4b41cdc53ea356, type: 3}
       propertyPath: m_Name
@@ -128,8 +69,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f105c0c272e6c146b4b41cdc53ea356, type: 3}
---- !u!4 &4080136270260237392 stripped
+--- !u!1001 &5555907724046755428
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1846253816660386836, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: e64a2a57b0cd54ddca7b0e10882fceaa, type: 2}
+    - target: {fileID: 6076561903562034134, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_Name
+      value: Bow Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7021646537012422355, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7876076
+      objectReference: {fileID: 0}
+    - target: {fileID: 7021646537012422355, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_Size.z
+      value: 2.5015802
+      objectReference: {fileID: 0}
+    - target: {fileID: 7021646537012422355, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_Center.x
+      value: 0.053770155
+      objectReference: {fileID: 0}
+    - target: {fileID: 7021646537012422355, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_Center.z
+      value: 0.98340034
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+--- !u!4 &2952870864305853871 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4281075886339594, guid: 7f105c0c272e6c146b4b41cdc53ea356, type: 3}
-  m_PrefabInstance: {fileID: 4075964163312730714}
+  m_CorrespondingSourceObject: {fileID: 7340929809463833547, guid: 677316acbfe88467a8e338c076a24cbe, type: 3}
+  m_PrefabInstance: {fileID: 5555907724046755428}
   m_PrefabAsset: {fileID: 0}
