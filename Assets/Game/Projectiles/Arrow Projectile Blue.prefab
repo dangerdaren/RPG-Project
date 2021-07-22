@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4428785116478649101, guid: d967e3b2c153044e9b0f6c4894a95bbb, type: 3}
       propertyPath: m_Name
-      value: ArrowProjectile_Blue
+      value: Arrow Projectile Blue
       objectReference: {fileID: 0}
     - target: {fileID: 4931664119100617084, guid: d967e3b2c153044e9b0f6c4894a95bbb, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
