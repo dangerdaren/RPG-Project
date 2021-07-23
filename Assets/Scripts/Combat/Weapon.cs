@@ -33,6 +33,11 @@ namespace RPG.Combat
             {
                 animator.runtimeAnimatorController = animOverride;
             }
+            else //If there is an override but it hasn't been properly filled, throw an error.
+            {
+                if (this.name == "Unarmed") return;
+                Debug.LogError($"!!! {this.name} has an incorrect or unfilled Animator Override Controller !!!");
+            }
         }
 
         private void DestoryOldWeapon(Transform rightHand, Transform leftHand)
