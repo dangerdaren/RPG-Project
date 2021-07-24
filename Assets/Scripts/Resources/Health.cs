@@ -11,11 +11,13 @@ namespace RPG.Resources
         private bool isDead = false;
         public bool IsDead => isDead;
 
+        float fullHealth;
 
         void Start()
         {
             //TODO this WILL introduce a bug where enemies will come back to life. Fix later.
-            healthPoints = GetComponent<BaseStats>().GetHealth();
+            fullHealth = GetComponent<BaseStats>().GetHealth();
+            healthPoints = fullHealth;
         }
 
         // Update is called once per frame
@@ -33,6 +35,12 @@ namespace RPG.Resources
             {
                 Die();
             }
+        }
+
+        public float GetHealthPercentage()
+        {
+            float healthFrac = healthPoints / fullHealth;
+            return healthFrac * 100;
         }
 
         public void Die()
