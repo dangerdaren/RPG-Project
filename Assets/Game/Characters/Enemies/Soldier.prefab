@@ -1,19 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2402356324132229831
+--- !u!1001 &5242316276981946063
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1851806507751321280, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ccae2dc6cf6f0c4479b782fedd0c8172, type: 2}
     - target: {fileID: 1878735254645296672, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: charClass
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2197166178848215296, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_RootOrder
@@ -21,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2197166178848215296, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -34.12
       objectReference: {fileID: 0}
     - target: {fileID: 2197166178848215296, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.7645807
       objectReference: {fileID: 0}
     - target: {fileID: 2197166178848215296, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -22.43
       objectReference: {fileID: 0}
     - target: {fileID: 2197166178848215296, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,29 +55,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2197166178848215298, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2197166178848215324, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: m_Name
-      value: Archer
-      objectReference: {fileID: 0}
-    - target: {fileID: 8059307347028480859, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
-      propertyPath: healthPoints
-      value: 15
+      value: Soldier
       objectReference: {fileID: 0}
     - target: {fileID: 8461112432207029733, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
       propertyPath: defaultWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: f5f7a0c890c1f407fbb2b30c1458ed25, type: 2}
-    - target: {fileID: 8461112432207029733, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
-      propertyPath: timeBetweenAttacks
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8577616957666037777, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
-      propertyPath: chaseDistance
-      value: 20
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 6b8376c4d3a744de196bcca311c91c7b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a71589ee71004d4ca94522142e48cac, type: 3}
