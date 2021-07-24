@@ -1,10 +1,9 @@
-using System;
-using RPG.Core;
+using RPG.Resources;
 using UnityEngine;
 
 namespace RPG.Combat
 {
-    [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Weapon", order = 0)]
+    [CreateAssetMenu(fileName = "Weapon", menuName = "RPG Project/Weapons/New Weapon", order = 0)]
     public class Weapon: ScriptableObject
     {
         [SerializeField] AnimatorOverrideController animOverride = null;
@@ -15,8 +14,9 @@ namespace RPG.Combat
             public float WeaponRange => weaponRange;
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
-
+        
         const string weaponName = "Weapon";
+        
 
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
@@ -26,7 +26,7 @@ namespace RPG.Combat
             {
                 Transform handTransform = GetHandTransform(rightHand, leftHand);
                 GameObject weapon = Instantiate(equippedPrefab, handTransform);
-                weapon.name = weaponName;
+                weapon.name = weaponName;     
             }
 
             if (animOverride != null)

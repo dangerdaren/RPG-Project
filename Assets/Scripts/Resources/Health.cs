@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Stats;
+using RPG.Core;
 
-namespace RPG.Core
+namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
@@ -11,10 +11,11 @@ namespace RPG.Core
         private bool isDead = false;
         public bool IsDead => isDead;
 
-        // Start is called before the first frame update
+
         void Start()
         {
-
+            //TODO this WILL introduce a bug where enemies will come back to life. Fix later.
+            healthPoints = GetComponent<BaseStats>().GetHealth();
         }
 
         // Update is called once per frame

@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using RPG.Combat;
 using RPG.Movement;
 using UnityEngine;
 using UnityEngine.AI;
-using RPG.Core;
+using RPG.Resources;
 
 namespace RPG.Control
 {
