@@ -16,7 +16,7 @@ namespace RPG.Resources
         void Start()
         {
             //TODO this WILL introduce a bug where enemies will come back to life. Fix later.
-            fullHealth = GetComponent<BaseStats>().GetHealth();
+            fullHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
             healthPoints = fullHealth;
 
 
@@ -46,7 +46,7 @@ namespace RPG.Resources
 
             if (charExperience == null) return;
 
-            float awardXP = GetComponent<BaseStats>().GetXpReward();
+            float awardXP = GetComponent<BaseStats>().GetStat(Stat.ExperienceReward);
             charExperience.GainExperience(awardXP);
         }
 

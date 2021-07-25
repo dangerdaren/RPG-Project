@@ -6,11 +6,11 @@ namespace RPG.Resources
 {
     public class Experience : MonoBehaviour
     {
-        [SerializeField] float expereincePoints = 0;
+        [SerializeField] float experiencePoints = 0;
 
         public void GainExperience(float experience)
         {
-            expereincePoints += experience;
+            experiencePoints += experience;
         }
     }
 }
