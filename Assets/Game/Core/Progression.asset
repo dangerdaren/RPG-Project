@@ -20,18 +20,22 @@ MonoBehaviour:
     - 400
     - 700
     - 1100
+    awardXP: 
   - characterClass: 2
     healthAtLevel:
     - 20
     - 0
     - 0
+    awardXP: 
   - characterClass: 3
     healthAtLevel:
     - 15
     - 0
     - 0
+    awardXP: 
   - characterClass: 4
     healthAtLevel:
     - 30
     - 0
     - 0
+    awardXP: 

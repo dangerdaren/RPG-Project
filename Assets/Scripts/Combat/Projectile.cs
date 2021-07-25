@@ -14,6 +14,7 @@ namespace RPG.Combat
 
 
         Health target = null;
+        GameObject instigator = null;
         float damage = 0;
 
         // Start is called before the first frame update
@@ -31,10 +32,11 @@ namespace RPG.Combat
             ShootAt();
         }
 
-        public void SetTarget(Health target, float damage)
+        public void SetTarget(Health target, GameObject instigator, float damage)
         {
             this.target = target;
             this.damage = damage;
+            this.instigator = instigator;
         }
 
         private void ShootAt()
@@ -63,7 +65,7 @@ namespace RPG.Combat
 
             speed = 0f;
 
-            target.TakeDamage(damage);
+            target.TakeDamage(instigator, damage);
 
             if (hitEffect != null)
             {

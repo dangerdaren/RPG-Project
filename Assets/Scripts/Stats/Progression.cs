@@ -24,6 +24,7 @@ namespace RPG.Stats
         {
             public CharacterClass characterClass;
             public float[] healthAtLevel;
+            public int[] awardXP;
         }
     }
 }

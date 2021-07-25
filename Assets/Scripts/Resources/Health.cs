@@ -18,6 +18,8 @@ namespace RPG.Resources
             //TODO this WILL introduce a bug where enemies will come back to life. Fix later.
             fullHealth = GetComponent<BaseStats>().GetHealth();
             healthPoints = fullHealth;
+
+
         }
 
         // Update is called once per frame
@@ -26,15 +28,26 @@ namespace RPG.Resources
 
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0); //simple solution to keep health from dipping below 0.
             Debug.Log($"{this.name}'s current health: {healthPoints}");
 
             if (healthPoints < 1)
             {
+                AwardXP(instigator);
                 Die();
             }
+        }
+
+        private void AwardXP(GameObject instigator)
+        {
+            Experience charExperience = instigator.GetComponent<Experience>();
+
+            if (charExperience == null) return;
+
+            float awardXP = GetComponent<BaseStats>().GetXpReward();
+            charExperience.GainExperience(awardXP);
         }
 
         public float GetHealthPercentage()

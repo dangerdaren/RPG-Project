@@ -217,6 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1264d9fe2a6484dca890d9c0fb04c1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingCharLevel: 1
+  currentCharLevel: 1
   charClass: 0
   progression: {fileID: 11400000, guid: 2c4700c9b891f4a0c9e225300e0f15a0, type: 2}

@@ -30,12 +30,11 @@ namespace RPG.Combat
             if (target == null || target.IsDead)
             {
                 healthText.text = "N/A";
+                return;
             }
-            else
-            {
-                //String.Format to remove decimal places.
-                healthText.text = String.Format("{0:0}%", target.GetHealthPercentage());
-            }
+
+            //String.Format to remove decimal places.
+            healthText.text = String.Format("{0:0}%", target.GetHealthPercentage());
 
         }
 
