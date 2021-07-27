@@ -11,7 +11,7 @@ namespace RPG.Stats
 
         Dictionary<CharacterClass, Dictionary<Stat, float[]>> classLookupTable = null;
 
-        public float GetStat(Stat charStat, CharacterClass charClass, int charLevel)
+        public float GetStatValue(Stat charStat, CharacterClass charClass, int charLevel)
         {
             BuildLookup();
 
@@ -21,6 +21,14 @@ namespace RPG.Stats
 
             return levels[charLevel - 1];
 
+        }
+
+        public int GetAllLevels(Stat stat, CharacterClass characterClass)
+        {
+            BuildLookup();
+
+            float[] levels = classLookupTable[characterClass][stat];
+            return levels.Length;
         }
 
         private void BuildLookup()
