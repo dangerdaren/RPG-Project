@@ -26,14 +26,19 @@ namespace RPG.SceneManagement
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.L))
             {
                 Load();
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 Save();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Delete))
+            {
+                DeleteSaveGame();
             }
         }
 
@@ -48,7 +53,12 @@ namespace RPG.SceneManagement
             //GetComponent<SavingSystem>().Load(defaultSaveFile); todo remove this if it works.
             savingSystem.Load(defaultSaveFile);
         }
-    }
 
+        public void DeleteSaveGame()
+        {
+            GetComponent<SavingSystem>().Delete(defaultSaveFile);
+        }
+
+    }
 
 }

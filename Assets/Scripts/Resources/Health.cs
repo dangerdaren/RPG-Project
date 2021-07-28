@@ -7,18 +7,21 @@ namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] private float healthPoints = 100f;
+        [SerializeField] private float healthPoints = -1f;
         private bool isDead = false;
         public bool IsDead => isDead;
 
         float fullHealth;
 
-        void Start()
+        void Awake()
         {
-            //TODO this WILL introduce a bug where enemies will come back to life. Fix later.
-            fullHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
-            healthPoints = fullHealth;
 
+            fullHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
+            if (healthPoints < 0 && !isDead)
+            {
+                healthPoints = fullHealth;
+                Debug.Log("Blarg!");
+            }
 
         }
 
@@ -71,6 +74,7 @@ namespace RPG.Resources
         public void RestoreState(object state)
         {
             healthPoints = (float)state;
+
 
             if (healthPoints < 1)
             {
