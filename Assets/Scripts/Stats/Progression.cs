@@ -18,8 +18,8 @@ namespace RPG.Stats
             float[] levels = classLookupTable[charClass][charStat];
 
             if (levels.Length < charLevel) return 0;
-
-            return levels[charLevel - 1];
+            Debug.Log($"{name} is returning {charLevel}");
+            return levels[charLevel];
 
         }
 
