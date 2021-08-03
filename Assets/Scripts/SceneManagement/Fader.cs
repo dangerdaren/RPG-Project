@@ -7,7 +7,7 @@ namespace RPG.SceneManagement
     {
         CanvasGroup canvasFader;
 
-        private void Start()
+        private void Awake()
         {
             canvasFader = GetComponent<CanvasGroup>();
         }

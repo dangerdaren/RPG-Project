@@ -38,7 +38,7 @@ namespace RPG.Stats
 
             foreach (CharacterClassProgression charClassProgression in characterClasses)
             {
-                Dictionary<Stat, float[]> statLookupTable = new Dictionary<Stat, float[]>();
+                var statLookupTable = new Dictionary<Stat, float[]>();
 
                 foreach (ProgressionStat progressionStat in charClassProgression.stats)
                 {
