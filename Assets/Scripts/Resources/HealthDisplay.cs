@@ -25,8 +25,8 @@ namespace RPG.Resources
 
         private void DisplayHealth()
         {
-            //String.Format to remove decimal places.
-            healthText.text = String.Format("{0:0}%", health.GetHealthPercentage());
+            //String.Format to remove decimal places. Also set up with reference numbers to the following variables
+            healthText.text = String.Format("{0:0}/{1:0}", health.GetHealthPoints(), health.GetMaxHealthPoints());
         }
 
     }

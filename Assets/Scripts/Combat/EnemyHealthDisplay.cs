@@ -34,7 +34,7 @@ namespace RPG.Combat
             }
 
             //String.Format to remove decimal places.
-            healthText.text = String.Format("{0:0}%", target.GetHealthPercentage());
+            healthText.text = String.Format("{0:0}/{1:0}", target.GetHealthPoints(), target.GetMaxHealthPoints());
 
         }
 

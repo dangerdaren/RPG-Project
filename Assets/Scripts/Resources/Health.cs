@@ -32,14 +32,10 @@ namespace RPG.Resources
             GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         public void TakeDamage(GameObject instigator, float damage)
         {
+            print($"{gameObject.name} took damage: {damage}");
+
             healthPoints = Mathf.Max(healthPoints - damage, 0); //simple solution to keep health from dipping below 0.
             Debug.Log($"{this.name}'s current health: {healthPoints}");
 
@@ -48,6 +44,16 @@ namespace RPG.Resources
                 AwardXP(instigator);
                 Die();
             }
+        }
+
+        public float GetHealthPoints()
+        {
+            return healthPoints;
+        }
+
+        public float GetMaxHealthPoints()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         private void AwardXP(GameObject instigator)

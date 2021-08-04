@@ -3,6 +3,7 @@ using RPG.Core;
 using RPG.Movement;
 using RPG.Saving;
 using RPG.Resources;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -90,15 +91,19 @@ namespace RPG.Combat
         // Animation Event already built into imported animation
         private void Hit()
         {
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+            //float damage = 5;
+
             if (target == null) return;
 
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
             }
             else
             {
-                target.TakeDamage(gameObject, currentWeapon.WeaponDamage);
+
+                target.TakeDamage(gameObject, damage);
             }
 
         }
