@@ -14,7 +14,7 @@ namespace RPG.Stats
 
         public event Action onLevelUp;
 
-        int currentLevel = 0;
+        int currentLevel = 1;
 
         private void Awake()
         {
@@ -72,11 +72,11 @@ namespace RPG.Stats
             float currentXP = experience.ExperiencePoints;
             int penultimateLevel = progression.GetAllLevels(Stat.ExperienceToLevelUp, charClass);
 
-            for (int level = startingLevel; level <= penultimateLevel; level++)
+            for (int level = 1; level <= penultimateLevel; level++)
             {
                 print($"Your current level is: {level}");
                 float XPToLevelUp = progression.GetStatValue(Stat.ExperienceToLevelUp, charClass, level);
-                print($"To get to level {level}, you NEED {XPToLevelUp} XP. You CURRENTLY have {currentXP} XP.");
+                print($"To get to level {level+1}, you NEED {XPToLevelUp} XP. You CURRENTLY have {currentXP} XP.");
                 if (XPToLevelUp > currentXP)
                 {
                     print($"Therefore, your level is now: {level}");
