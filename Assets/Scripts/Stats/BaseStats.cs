@@ -30,8 +30,6 @@ namespace RPG.Stats
         private void UpdateLevel()
         {
             int newLevel = CalculateLevel();
-            print($"newLevel = {newLevel}");
-            print($"currentLevel = {currentLevel}");
             if (newLevel > currentLevel)
             {
                 currentLevel = newLevel;
@@ -57,16 +55,22 @@ namespace RPG.Stats
 
         public int CalculateLevel()
         {
-            if (experience == null) return startingLevel;
+            if (experience == null)
+            {
+                return startingLevel;
+            }
 
             float currentXP = experience.ExperiencePoints;
             int penultimateLevel = progression.GetAllLevels(Stat.ExperienceToLevelUp, charClass);
 
-            for (int level = 1; level <= penultimateLevel; level++)
+            for (int level = startingLevel; level <= penultimateLevel; level++)
             {
+                print($"Your current level is: {level}");
                 float XPToLevelUp = progression.GetStatValue(Stat.ExperienceToLevelUp, charClass, level);
+                print($"To get to level {level}, you NEED {XPToLevelUp} XP. You CURRENTLY have {currentXP} XP.");
                 if (XPToLevelUp > currentXP)
                 {
+                    print($"Therefore, your level is now: {level}");
                     return level;
                 }
             }
