@@ -11,8 +11,8 @@ namespace RPG.Stats
         [SerializeField] float experiencePoints = 20;
         public float ExperiencePoints => experiencePoints;
 
-        //public delegate void ExperienceGainedDelegate();
         public event Action onExperienceGained;
+
 
         public void GainExperience(float experience)
         {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -8,7 +9,10 @@ namespace RPG.Stats
         [SerializeField] int startingLevel = 1;
         [SerializeField] CharacterClass charClass;
         [SerializeField] Progression progression = null;
+        [SerializeField] GameObject levelUpParticleEffect = null;
         Experience experience;
+
+        public event Action onLevelUp;
 
         int currentLevel = 0;
 
@@ -33,9 +37,14 @@ namespace RPG.Stats
             if (newLevel > currentLevel)
             {
                 currentLevel = newLevel;
-                print("Leveled up!");
-                // todo weird error here where player is getting more XP than he ought to.
+                LevelUpEffect();
+                onLevelUp();
             }
+        }
+
+        private void LevelUpEffect()
+        {
+            Instantiate(levelUpParticleEffect, transform);
         }
 
         public float GetStat(Stat stat)
@@ -57,7 +66,7 @@ namespace RPG.Stats
         {
             if (experience == null)
             {
-                return startingLevel;
+                 return startingLevel;
             }
 
             float currentXP = experience.ExperiencePoints;

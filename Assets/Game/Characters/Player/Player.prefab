@@ -38,7 +38,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8276ce696570d4ba1ade7fb124bc8170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  experiencePoints: 20
+  experiencePoints: 0
 --- !u!1001 &7123099281174734362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -169,6 +169,10 @@ PrefabInstance:
       propertyPath: charClass
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4780329358788679162, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
+      propertyPath: levelUpParticleEffect
+      value: 
+      objectReference: {fileID: 3577323743456913357, guid: 4ebe15c20cd9b4a11b721e9717da55bf, type: 3}
     - target: {fileID: 5059892056157752006, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
       propertyPath: m_Name
       value: Player

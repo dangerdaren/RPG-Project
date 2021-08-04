@@ -7,7 +7,10 @@ namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] private float healthPoints = -1f;
+        [SerializeField] float regenerationPercentage = 70f;
+
+        private float healthPoints = -1f;
+
         private bool isDead = false;
         public bool IsDead => isDead;
 
@@ -15,7 +18,6 @@ namespace RPG.Resources
 
         void Awake()
         {
-
             fullHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
             if (healthPoints < 0 && !isDead)
             {
@@ -23,6 +25,11 @@ namespace RPG.Resources
                 Debug.Log("Blarg!");
             }
 
+        }
+
+        private void Start()
+        {
+            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
         }
 
         // Update is called once per frame
@@ -64,6 +71,12 @@ namespace RPG.Resources
             if (!isDead) GetComponent<Animator>().SetTrigger("die");
             isDead = true;
             GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        private void RegenerateHealth()
+        {
+            float regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * (regenerationPercentage / 100);
+            healthPoints = Mathf.Max(healthPoints, regenHealthPoints);
         }
 
         public object CaptureState()
