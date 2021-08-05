@@ -13,11 +13,16 @@ namespace RPG.Movement
         private NavMeshAgent navMeshAgent;
         private Health health;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             health = GetComponent<Health>();
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+
         }
 
         // Update is called once per frame
@@ -63,9 +68,11 @@ namespace RPG.Movement
         public void RestoreState(object state)
         {
             SerializableVector3 position = (SerializableVector3)state;
-            GetComponent<NavMeshAgent>().enabled = false;
+            navMeshAgent.enabled = false;
             transform.position = position.ToVector();
-            GetComponent<NavMeshAgent>().enabled = true;
+            navMeshAgent.enabled = true;
+            GetComponent<ActionScheduler>().CancelCurrentAction(); //todo remove if new errors!
+
         }
     }
 }
