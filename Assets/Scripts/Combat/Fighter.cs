@@ -20,11 +20,14 @@ namespace RPG.Combat
         private Mover mover;
         private Weapon currentWeapon = null;
 
-        // Start is called before the first frame update
-        void Start()
+
+        private void Awake()
         {
             mover = GetComponent<Mover>();
+        }
 
+        void Start()
+        {
             if (currentWeapon == null)
             {
                 EquipWeapon(defaultWeapon);

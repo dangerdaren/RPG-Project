@@ -17,16 +17,12 @@ namespace RPG.Combat
         GameObject instigator = null;
         float damage = 0;
 
-        // Start is called before the first frame update
         void Start()
         {
             transform.LookAt(GetAimLocation());
             Destroy(gameObject, maxLifetime);
         }
 
-
-
-        // Update is called once per frame
         void Update()
         {
             ShootAt();

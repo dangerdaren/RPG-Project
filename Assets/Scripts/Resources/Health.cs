@@ -22,14 +22,22 @@ namespace RPG.Resources
             if (healthPoints < 0 && !isDead)
             {
                 healthPoints = fullHealth;
-                Debug.Log("Blarg!");
             }
+        }
 
+        private void OnEnable()
+        {
+            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+        }
+
+        private void OnDisable()
+        {
+            GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
         }
 
         private void Start()
         {
-            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+
         }
 
         public void TakeDamage(GameObject instigator, float damage)

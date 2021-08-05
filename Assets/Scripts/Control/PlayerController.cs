@@ -13,7 +13,7 @@ namespace RPG.Control
         Fighter fighter;
         Health health;
 
-        void Start()
+        void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             fighter = GetComponent<Fighter>();
