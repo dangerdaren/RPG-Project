@@ -8,10 +8,16 @@ namespace RPG.Combat
     {
         [SerializeField] AnimatorOverrideController animOverride = null;
         [SerializeField] GameObject equippedPrefab = null;
+
         [SerializeField] float weaponDamage = 5f;
-            public float WeaponDamage => weaponDamage;
+          public float WeaponDamage => weaponDamage;
+       
+        [SerializeField] float weaponPercentageBonus = 0f;
+            public float WeaponPercentageBonus => weaponPercentageBonus;
+
         [SerializeField] float weaponRange = 2f;
             public float WeaponRange => weaponRange;
+
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
         
