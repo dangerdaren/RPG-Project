@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameDevTV.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,16 +12,13 @@ namespace RPG.Stats
         GameObject player;
 
         Text levelText;
-        float charLevel = 1;
+        //LazyValue<float> charLevel;
 
         void Awake()
         {
             player = GameObject.FindWithTag("Player");
-
-            charLevel = player.GetComponent<BaseStats>().GetLevel();
             levelText = GetComponent<Text>();
         }
-
 
         void Update()
         {
@@ -29,7 +27,7 @@ namespace RPG.Stats
 
         private void ShowLevel()
         {
-            charLevel = player.GetComponent<BaseStats>().GetLevel();
+            float charLevel = player.GetComponent<BaseStats>().GetLevel();
             levelText.text = String.Format("{0:0}", charLevel);
         }
     }
