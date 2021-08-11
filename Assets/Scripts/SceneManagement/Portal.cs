@@ -3,11 +3,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using RPG.Control;
 
 namespace RPG.SceneManagement
 {
     public class Portal : MonoBehaviour
     {
+
         enum DestinationIdentifier
         {
             A, B, C, D, E
@@ -19,6 +21,8 @@ namespace RPG.SceneManagement
         [SerializeField] DestinationIdentifier destination;
         [SerializeField] float fadeTime = 1f;
         [SerializeField] float fadeInDelay = .5f;
+
+        PlayerController playerController = null;
 
 
         private void OnTriggerEnter(Collider other)
@@ -34,6 +38,8 @@ namespace RPG.SceneManagement
             DontDestroyOnLoad(gameObject); // this only works when the gameobject is in the root of the scene heirarchy.
 
             Fader fader = FindObjectOfType<Fader>();
+            playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            playerController.enabled = false;
 
             yield return fader.FadeOut(fadeTime); // yield return makes sure the coroutine has finished before moving on to the rest of the code.
 
@@ -41,6 +47,9 @@ namespace RPG.SceneManagement
             savingWrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(loadScene);
+            playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+            playerController.enabled = false;
 
             savingWrapper.Load();
 
@@ -50,7 +59,9 @@ namespace RPG.SceneManagement
             savingWrapper.Save();
 
             yield return new WaitForSeconds(fadeInDelay); // Cool, didn't know you could just do this whenever!
-            yield return fader.FadeIn(fadeTime);
+            fader.FadeIn(fadeTime);
+
+            playerController.enabled = true;
 
             Destroy(gameObject);
         }
