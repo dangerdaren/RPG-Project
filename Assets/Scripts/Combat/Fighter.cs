@@ -7,7 +7,6 @@ using RPG.Stats;
 using System.Collections.Generic;
 using GameDevTV.Utils;
 using System;
-using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -17,12 +16,11 @@ namespace RPG.Combat
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] WeaponConfig defaultWeapon = null;
-        [SerializeField] UnityEvent onMeleeImpact;
 
         private Health target;
         private float timeSinceLastAttack = Mathf.Infinity;
         private Mover mover;
-        private WeaponConfig currentWeaponConfig;
+        [SerializeField] private WeaponConfig currentWeaponConfig;
         private LazyValue<Weapon> currentWeapon;
 
         private void Awake()
@@ -101,15 +99,17 @@ namespace RPG.Combat
         // Animation Event already built into imported animation
         private void Hit()
         {
+
+            if (target == null) return;
+
             float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
-            //float damage = 5;
 
             if (currentWeapon.value != null)
             {
+                Debug.Log($"TEST!");
                 currentWeapon.value.OnHit();
             }
 
-            if (target == null) return;
 
             if (currentWeaponConfig.HasProjectile())
             {
@@ -117,10 +117,9 @@ namespace RPG.Combat
             }
             else
             {
-                //onMeleeImpact.Invoke();
                 target.TakeDamage(gameObject, damage);
             }
-            print($"Damage dealt: {damage}");
+
         }
 
 

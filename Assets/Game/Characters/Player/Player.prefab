@@ -42,6 +42,8 @@ MonoBehaviour:
   - cursor: 4
     texture: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     hotspot: {x: 0, y: 0}
+  navMeshProximity: 1
+  maxNavMeshPathLength: 40
 --- !u!114 &4403138869901081530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +145,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1185749123928807084, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
       propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495802011278140314, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
+      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3255635334742801983, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
@@ -257,6 +263,14 @@ PrefabInstance:
       propertyPath: uniqueIdentifier
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 5311079826058844756, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950167432069280474, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a490d2ac2e526246ab488aed902f6f1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f413bb5cb925843948eafaeed8347b2f, type: 3}
 --- !u!1 &4332445590950219913 stripped
