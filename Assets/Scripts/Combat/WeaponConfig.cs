@@ -25,14 +25,16 @@ namespace RPG.Combat
         const string weaponName = "Weapon";
         
 
-        public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
+        public Weapon Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
             DestoryOldWeapon(rightHand, leftHand);
+
+            Weapon weapon = null;
 
             if (equippedPrefab != null)
             {
                 Transform handTransform = GetHandTransform(rightHand, leftHand);
-                Weapon weapon = Instantiate(equippedPrefab, handTransform);
+                weapon = Instantiate(equippedPrefab, handTransform);
                 weapon.gameObject.name = weaponName;
             }
 
@@ -42,9 +44,11 @@ namespace RPG.Combat
             }
             else //If there is an override but it hasn't been properly filled, throw an error.
             {
-                if (this.name == "Unarmed") return;
+                if (this.name == "Unarmed") return null;
                 Debug.LogError($"!!! {this.name} has an incorrect or unfilled Animator Override Controller !!!");
             }
+
+            return weapon;
         }
 
         private void DestoryOldWeapon(Transform rightHand, Transform leftHand)

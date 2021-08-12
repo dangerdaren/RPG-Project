@@ -22,19 +22,19 @@ namespace RPG.Combat
         private Health target;
         private float timeSinceLastAttack = Mathf.Infinity;
         private Mover mover;
-        private LazyValue<WeaponConfig> currentWeapon;
-
+        private WeaponConfig currentWeaponConfig;
+        private LazyValue<Weapon> currentWeapon;
 
         private void Awake()
         {
             mover = GetComponent<Mover>();
-            currentWeapon = new LazyValue<WeaponConfig>(SetupDefaultWeapon);
+            currentWeaponConfig = defaultWeapon;
+            currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
         }
 
-        private WeaponConfig SetupDefaultWeapon()
+        private Weapon SetupDefaultWeapon()
         {
-            AttachWeapon(defaultWeapon);
-            return defaultWeapon;
+            return AttachWeapon(defaultWeapon);
         }
 
         void Start()
@@ -71,7 +71,7 @@ namespace RPG.Combat
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(target.transform.position, transform.position) <= currentWeapon.value.WeaponRange;
+            return Vector3.Distance(target.transform.position, transform.position) <= currentWeaponConfig.WeaponRange;
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -104,15 +104,20 @@ namespace RPG.Combat
             float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             //float damage = 5;
 
+            if (currentWeapon.value != null)
+            {
+                currentWeapon.value.OnHit();
+            }
+
             if (target == null) return;
 
-            if (currentWeapon.value.HasProjectile())
+            if (currentWeaponConfig.HasProjectile())
             {
-                currentWeapon.value.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
+                currentWeaponConfig.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
             }
             else
             {
-                onMeleeImpact.Invoke();
+                //onMeleeImpact.Invoke();
                 target.TakeDamage(gameObject, damage);
             }
             print($"Damage dealt: {damage}");
@@ -136,7 +141,7 @@ namespace RPG.Combat
         {
             if (stat == Stat.Damage)
             {
-                yield return currentWeapon.value.WeaponDamage;
+                yield return currentWeaponConfig.WeaponDamage;
             }
         }
 
@@ -144,20 +149,20 @@ namespace RPG.Combat
         {
             if (stat == Stat.Damage)
             {
-                yield return currentWeapon.value.WeaponPercentageBonus;
+                yield return currentWeaponConfig.WeaponPercentageBonus;
             }
         }
 
         public void EquipWeapon(WeaponConfig weapon)
         {
-            currentWeapon.value = weapon;
-            AttachWeapon(weapon);
+            currentWeaponConfig = weapon;
+            currentWeapon.value = AttachWeapon(weapon);
         }
 
-        private void AttachWeapon(WeaponConfig weapon)
+        private Weapon AttachWeapon(WeaponConfig weapon)
         {
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            return weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         public Health GetTarget()
@@ -168,7 +173,7 @@ namespace RPG.Combat
 
         public object CaptureState()
         {
-            return currentWeapon.value.name;
+            return currentWeaponConfig.name;
         }
 
         public void RestoreState(object state)
