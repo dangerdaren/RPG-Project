@@ -1,5 +1,6 @@
 using RPG.Attributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -11,6 +12,8 @@ namespace RPG.Combat
         [SerializeField] float maxLifetime = 20f;
         [SerializeField] float lifeAfterImpact = 1f;
         [SerializeField] GameObject[] projectileParts = null;
+        [SerializeField] UnityEvent onProjectileLaunch;
+        [SerializeField] UnityEvent onProjectileImpact;
 
 
         Health target = null;
@@ -19,6 +22,7 @@ namespace RPG.Combat
 
         void Start()
         {
+            onProjectileLaunch.Invoke();
             transform.LookAt(GetAimLocation());
             Destroy(gameObject, maxLifetime);
         }
@@ -56,15 +60,17 @@ namespace RPG.Combat
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<Health>() != target) return;
+            if (other.GetComponent<Health>() != target)return;
             if (target.IsDead) return;
 
             speed = 0f;
 
+            onProjectileImpact.Invoke();
             target.TakeDamage(instigator, damage);
 
             if (hitEffect != null)
             {
+
                 GameObject hitFX = Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
 

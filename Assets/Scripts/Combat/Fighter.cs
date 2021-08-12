@@ -7,6 +7,7 @@ using RPG.Stats;
 using System.Collections.Generic;
 using GameDevTV.Utils;
 using System;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -16,6 +17,7 @@ namespace RPG.Combat
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapon defaultWeapon = null;
+        [SerializeField] UnityEvent onMeleeImpact;
 
         private Health target;
         private float timeSinceLastAttack = Mathf.Infinity;
@@ -110,10 +112,10 @@ namespace RPG.Combat
             }
             else
             {
-
+                onMeleeImpact.Invoke();
                 target.TakeDamage(gameObject, damage);
             }
-            print($"Damage delt: {damage}");
+            print($"Damage dealt: {damage}");
         }
 
 
