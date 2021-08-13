@@ -12,6 +12,8 @@ namespace RPG.Control
         [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private float timeToWatchForPlayer = 5f;
         [SerializeField] private float waypointDwellTime = 0f;
+        [SerializeField] private float timeSinceAggravated = Mathf.Infinity;
+        [SerializeField] private float aggroCooldownTime = 5f;
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
 
@@ -54,9 +56,15 @@ namespace RPG.Control
             DetermineBehavior();
         }
 
+        public void Aggravate()
+        {
+            timeSinceAggravated = 0;
+
+        }
+
         private void DetermineBehavior()
         {
-            if (InAttackRangeOfPlayer() && fighter.CanAttack(player)) // Attack State
+            if (IsAggravated() && fighter.CanAttack(player)) // Attack State
             {
                 AttackBehavior();
             }
@@ -76,12 +84,13 @@ namespace RPG.Control
         {
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedAtWaypoint += Time.deltaTime;
+            timeSinceAggravated += Time.deltaTime;
         }
 
-        private bool InAttackRangeOfPlayer()
+        private bool IsAggravated()
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            return distanceToPlayer <= chaseDistance;
+            return distanceToPlayer <= chaseDistance || timeSinceAggravated < aggroCooldownTime;
         }
 
         private void AttackBehavior()
