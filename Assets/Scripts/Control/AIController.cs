@@ -4,6 +4,7 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Attributes;
 using GameDevTV.Utils;
+using System;
 
 namespace RPG.Control
 {
@@ -16,6 +17,7 @@ namespace RPG.Control
         [SerializeField] private float aggroCooldownTime = 5f;
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
+        [SerializeField] private float shoutDistance = 5f;
 
         [Range(0, 1)]
         [SerializeField] private float patrolSpeedFraction = 0.35f;
@@ -29,6 +31,7 @@ namespace RPG.Control
         private float timeSinceLastSawPlayer = Mathf.Infinity;
         private float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         private int currentWaypointIndex = 0;
+
 
         private void Awake()
         {
@@ -100,6 +103,20 @@ namespace RPG.Control
             print($"{this.name} is chasing {player.name}!");
 
             AttackPlayer();
+            AggravateNearbyEnemy();
+
+        }
+
+        private void AggravateNearbyEnemy()
+        {
+            RaycastHit[] nearbyEnemies = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0f);
+            foreach (RaycastHit enemy in nearbyEnemies)
+            {
+                AIController enemyAI = enemy.transform.GetComponent<AIController>();
+                if (enemyAI == null || enemyAI == this) continue;
+
+                enemyAI.Aggravate();
+            }
         }
 
         private void SuspicionBehavior()
